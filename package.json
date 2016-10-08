@@ -1,6 +1,6 @@
 {
   "name": "big-numbers",
-  "author": "MakeAwesomeHappen",
+  "author": "Shane Porter",
   "version": "1.0.0",
   "keywords": ["pebble-app"],
   "private": true,
@@ -11,13 +11,10 @@
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
-      "aplite",
-      "basalt",
-      "chalk",
-      "diorite"
+      "chalk"
     ],
     "watchapp": {
-      "watchface": false
+      "watchface": true 
     },
     "messageKeys": [
       "dummy"
