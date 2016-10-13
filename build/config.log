@@ -1,0 +1,21 @@
+# project  configured on Thu Oct 13 20:53:21 2016 by
+# waf 1.7.11 (abi 98, python 20706f0 on linux2)
+# using /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/waf configure
+#
+----------------------------------------
+Setting top to
+/home/shane/pebble-dev/big-numbers
+----------------------------------------
+Setting out to
+/home/shane/pebble-dev/big-numbers/build
+----------------------------------------
+Found Pebble SDK for chalk in:
+/home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk
+----------------------------------------
+Checking for program gcc,cc
+arm-none-eabi-gcc
+find program=['gcc', 'cc'] paths='' var='CC' -> 'arm-none-eabi-gcc'
+----------------------------------------
+Checking for program ar
+arm-none-eabi-ar
+find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-ar'
