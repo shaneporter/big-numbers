@@ -3,6 +3,7 @@
 // static variables:
 static Window *s_main_window;
 static TextLayer *s_time_layer;
+static Layer *s_canvas;
 
 static void update_time() {
   // Get a tm structure
@@ -22,6 +23,34 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
 }
 
+static void layer_update_proc(Layer *layer, GContext *ctx) {
+  /*
+  GRect bounds = layer_get_bounds(layer);
+
+  // 12 hours only, with a minimum size
+  s_hours -= (s_hours > 12) ? 12 : 0;
+
+  // Minutes are expanding circle arc
+  int minute_angle = get_angle_for_minute(s_minutes);
+  GRect frame = grect_inset(bounds, GEdgeInsets(4 * INSET));
+  graphics_context_set_fill_color(ctx, MINUTES_COLOR);
+  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, 20, 0, DEG_TO_TRIGANGLE(minute_angle));
+
+  // Adjust geometry variables for inner ring
+  frame = grect_inset(frame, GEdgeInsets(3 * HOURS_RADIUS));
+
+  // Hours are dots
+  for(int i = 0; i < 12; i++) {
+    int hour_angle = get_angle_for_hour(i);
+    GPoint pos = gpoint_from_polar(frame, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(hour_angle));
+
+    graphics_context_set_fill_color(ctx, i <= s_hours ? HOURS_COLOR : HOURS_COLOR_INACTIVE);
+    graphics_fill_circle(ctx, pos, HOURS_RADIUS);
+  }
+  */
+}
+
+
 static void main_window_load(Window *window) {
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
@@ -38,11 +67,17 @@ static void main_window_load(Window *window) {
   text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
+  s_canvas = layer_create(bounds);
+  layer_set_update_proc(s_canvas, layer_update_proc);
+  layer_add_child(window_layer, s_canvas);
+
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
 }
 
 static void main_window_unload(Window *window) {
+  // Destroy canvas:
+  layer_destroy(s_canvas);
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
 }
