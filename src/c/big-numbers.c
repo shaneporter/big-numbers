@@ -5,6 +5,8 @@ static Window *s_main_window;
 static TextLayer *s_time_layer;
 static Layer *s_canvas;
 
+#define INSET 5
+
 static void update_time() {
   // Get a tm structure
   time_t temp = time(NULL);
@@ -24,30 +26,12 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 static void layer_update_proc(Layer *layer, GContext *ctx) {
-  /*
   GRect bounds = layer_get_bounds(layer);
 
-  // 12 hours only, with a minimum size
-  s_hours -= (s_hours > 12) ? 12 : 0;
-
   // Minutes are expanding circle arc
-  int minute_angle = get_angle_for_minute(s_minutes);
   GRect frame = grect_inset(bounds, GEdgeInsets(4 * INSET));
-  graphics_context_set_fill_color(ctx, MINUTES_COLOR);
-  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, 20, 0, DEG_TO_TRIGANGLE(minute_angle));
+  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, 20, 0, DEG_TO_TRIGANGLE(0));
 
-  // Adjust geometry variables for inner ring
-  frame = grect_inset(frame, GEdgeInsets(3 * HOURS_RADIUS));
-
-  // Hours are dots
-  for(int i = 0; i < 12; i++) {
-    int hour_angle = get_angle_for_hour(i);
-    GPoint pos = gpoint_from_polar(frame, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(hour_angle));
-
-    graphics_context_set_fill_color(ctx, i <= s_hours ? HOURS_COLOR : HOURS_COLOR_INACTIVE);
-    graphics_fill_circle(ctx, pos, HOURS_RADIUS);
-  }
-  */
 }
 
 
