@@ -3,7 +3,8 @@
 // static variables:
 static Window *s_main_window;
 static TextLayer *s_time_layer;
-static Layer *s_canvas;
+static Layer *s_canvas, *s_battery_layer;
+static int s_battery_level;
 
 #define INSET 5
 
@@ -25,16 +26,27 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
 }
 
+static void battery_callback(BatteryChargeState state) {
+  // Record the new battery level
+  s_battery_level = state.charge_percent;
+}
+
 static void layer_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
 
-  // Minutes are expanding circle arc
-  GRect frame = grect_inset(bounds, GEdgeInsets(1 * INSET));
-  graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, DEG_TO_TRIGANGLE(360));
-
+  // GRect frame = grect_inset(bounds, GEdgeInsets(3 * INSET));
+  // graphics_context_set_fill_color(ctx, GColorMayGreen);
+  // graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, 360);
 }
 
+static void battery_layer_update_proc(Layer *layer, GContext *ctx) {
+  GRect bounds = layer_get_bounds(layer);
+
+  // battery is circle arc
+  GRect frame = grect_inset(bounds, GEdgeInsets(1 * INSET));
+  graphics_context_set_fill_color(ctx, GColorBlack);
+  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, DEG_TO_TRIGANGLE((int)(float)(((float)s_battery_level / 100.0F) * 360)));
+}
 
 static void main_window_load(Window *window) {
   // Get information about the Window
@@ -53,15 +65,21 @@ static void main_window_load(Window *window) {
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
   s_canvas = layer_create(bounds);
+  s_battery_layer = layer_create(bounds);
+
   layer_set_update_proc(s_canvas, layer_update_proc);
+  layer_set_update_proc(s_battery_layer, battery_layer_update_proc);
+
   layer_add_child(window_layer, s_canvas);
+  layer_add_child(window_layer, s_battery_layer);
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
 }
 
 static void main_window_unload(Window *window) {
-  // Destroy canvas:
+  // Destroy canvas and battery:
+  layer_destroy(s_battery_layer);
   layer_destroy(s_canvas);
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
@@ -82,6 +100,9 @@ static void init() {
 
   // Show the Window on the watch, with animated=true
   window_stack_push(s_main_window, true);
+
+  // Ensure battery level is displayed from the start
+  battery_callback(battery_state_service_peek());
 
   // make sure the time is displayed from the start:
   update_time();
