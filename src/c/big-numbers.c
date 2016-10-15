@@ -33,10 +33,8 @@ static void battery_callback(BatteryChargeState state) {
 
 static void layer_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
-
-  // GRect frame = grect_inset(bounds, GEdgeInsets(3 * INSET));
-  // graphics_context_set_fill_color(ctx, GColorMayGreen);
-  // graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, 360);
+  graphics_context_set_fill_color(ctx, GColorPastelYellow);
+  graphics_fill_circle(ctx, GPoint(89, 89), 75);
 }
 
 static void battery_layer_update_proc(Layer *layer, GContext *ctx) {
@@ -44,7 +42,7 @@ static void battery_layer_update_proc(Layer *layer, GContext *ctx) {
 
   // battery is circle arc
   GRect frame = grect_inset(bounds, GEdgeInsets(1 * INSET));
-  graphics_context_set_fill_color(ctx, GColorBlack);
+  graphics_context_set_fill_color(ctx, GColorChromeYellow);
   graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, DEG_TO_TRIGANGLE((int)(float)(((float)s_battery_level / 100.0F) * 360)));
 }
 
@@ -61,7 +59,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_time_layer, GColorClear);
   text_layer_set_text_color(s_time_layer, GColorBlack);
   text_layer_set_text(s_time_layer, "00:00");
-  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
   s_canvas = layer_create(bounds);
