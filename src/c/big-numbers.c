@@ -29,8 +29,9 @@ static void layer_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
 
   // Minutes are expanding circle arc
-  GRect frame = grect_inset(bounds, GEdgeInsets(4 * INSET));
-  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, 20, 0, DEG_TO_TRIGANGLE(0));
+  GRect frame = grect_inset(bounds, GEdgeInsets(1 * INSET));
+  graphics_context_set_fill_color(ctx, GColorBlack);
+  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, DEG_TO_TRIGANGLE(360));
 
 }
 

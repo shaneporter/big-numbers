@@ -695,8 +695,6 @@ Discarded input sections
                 0x0000000000000000        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
  .text.bitmap_layer_set_background_color
                 0x0000000000000000        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
- .text.graphics_context_set_fill_color
-                0x0000000000000000        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
  .text.graphics_context_set_stroke_color
                 0x0000000000000000        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
  .text.graphics_context_set_text_color
@@ -1228,7 +1226,7 @@ LOAD /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc
  .note.gnu.build-id
                 0x0000000000000084       0x24 linker stubs
 
-.text           0x00000000000000a8      0x385
+.text           0x00000000000000a8      0x3a1
  *(.text)
  .text          0x00000000000000a8       0x14 /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
  *(.text.*)
@@ -1241,143 +1239,146 @@ LOAD /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc
  .text.main_window_load
                 0x0000000000000138       0xb8 src/c/big-numbers.c.9.o
  .text.layer_update_proc
-                0x00000000000001f0       0x4c src/c/big-numbers.c.9.o
+                0x00000000000001f0       0x5c src/c/big-numbers.c.9.o
  .text.startup.main
-                0x000000000000023c       0x6c src/c/big-numbers.c.9.o
-                0x000000000000023c                main
+                0x000000000000024c       0x6c src/c/big-numbers.c.9.o
+                0x000000000000024c                main
  .text.app_event_loop
-                0x00000000000002a8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002a8                app_event_loop
+                0x00000000000002b8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000002b8                app_event_loop
  .text.clock_is_24h_style
-                0x00000000000002b4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002b4                clock_is_24h_style
+                0x00000000000002c4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000002c4                clock_is_24h_style
  .text.fonts_get_system_font
-                0x00000000000002c0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002c0                fonts_get_system_font
+                0x00000000000002d0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000002d0                fonts_get_system_font
  .text.layer_add_child
-                0x00000000000002cc        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002cc                layer_add_child
+                0x00000000000002dc        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000002dc                layer_add_child
  .text.layer_create
-                0x00000000000002d8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002d8                layer_create
+                0x00000000000002e8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000002e8                layer_create
  .text.layer_destroy
-                0x00000000000002e4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002e4                layer_destroy
+                0x00000000000002f4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000002f4                layer_destroy
  .text.layer_get_bounds
-                0x00000000000002f0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002f0                layer_get_bounds
+                0x0000000000000300        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000300                layer_get_bounds
  .text.layer_set_update_proc
-                0x00000000000002fc        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000002fc                layer_set_update_proc
- .text.memset   0x0000000000000308        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000308                memset
+                0x000000000000030c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x000000000000030c                layer_set_update_proc
+ .text.memset   0x0000000000000318        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000318                memset
  .text.strftime
-                0x0000000000000314        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000314                strftime
+                0x0000000000000324        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000324                strftime
  .text.tick_timer_service_subscribe
-                0x0000000000000320        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000320                tick_timer_service_subscribe
+                0x0000000000000330        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000330                tick_timer_service_subscribe
  .text.window_create
-                0x000000000000032c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x000000000000032c                window_create
+                0x000000000000033c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x000000000000033c                window_create
  .text.window_destroy
-                0x0000000000000338        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000338                window_destroy
+                0x0000000000000348        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000348                window_destroy
  .text.window_get_root_layer
-                0x0000000000000344        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000344                window_get_root_layer
+                0x0000000000000354        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000354                window_get_root_layer
  .text.window_set_window_handlers
-                0x0000000000000350        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000350                window_set_window_handlers
+                0x0000000000000360        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000360                window_set_window_handlers
  .text.window_stack_push
-                0x000000000000035c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x000000000000035c                window_stack_push
+                0x000000000000036c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x000000000000036c                window_stack_push
+ .text.graphics_context_set_fill_color
+                0x0000000000000378        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000378                graphics_context_set_fill_color
  .text.localtime
-                0x0000000000000368        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000368                localtime
+                0x0000000000000384        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000384                localtime
  .text.text_layer_create
-                0x0000000000000374        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000374                text_layer_create
+                0x0000000000000390        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000390                text_layer_create
  .text.text_layer_destroy
-                0x0000000000000380        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000380                text_layer_destroy
+                0x000000000000039c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x000000000000039c                text_layer_destroy
  .text.text_layer_get_layer
-                0x000000000000038c        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x000000000000038c                text_layer_get_layer
+                0x00000000000003a8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003a8                text_layer_get_layer
  .text.text_layer_set_background_color
-                0x0000000000000398        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x0000000000000398                text_layer_set_background_color
+                0x00000000000003b4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003b4                text_layer_set_background_color
  .text.text_layer_set_font
-                0x00000000000003a4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003a4                text_layer_set_font
+                0x00000000000003c0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003c0                text_layer_set_font
  .text.text_layer_set_text
-                0x00000000000003b0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003b0                text_layer_set_text
+                0x00000000000003cc        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003cc                text_layer_set_text
  .text.text_layer_set_text_alignment
-                0x00000000000003bc        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003bc                text_layer_set_text_alignment
+                0x00000000000003d8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003d8                text_layer_set_text_alignment
  .text.text_layer_set_text_color
-                0x00000000000003c8        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003c8                text_layer_set_text_color
- .text.time     0x00000000000003d4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003d4                time
+                0x00000000000003e4        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003e4                text_layer_set_text_color
+ .text.time     0x00000000000003f0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003f0                time
  .text.grect_inset
-                0x00000000000003e0        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003e0                grect_inset
+                0x00000000000003fc        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x00000000000003fc                grect_inset
  .text.graphics_fill_radial
-                0x00000000000003ec        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
-                0x00000000000003ec                graphics_fill_radial
+                0x0000000000000408        0xc /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+                0x0000000000000408                graphics_fill_radial
  *(.rodata)
- .rodata        0x00000000000003f8        0x8 src/c/big-numbers.c.9.o
+ .rodata        0x0000000000000414        0x8 src/c/big-numbers.c.9.o
  *(.rodata*)
  .rodata.str1.1
-                0x0000000000000400       0x2d src/c/big-numbers.c.9.o
+                0x000000000000041c       0x2d src/c/big-numbers.c.9.o
 
-.glue_7         0x0000000000000430        0x0
+.glue_7         0x000000000000044c        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000000430        0x0
+.glue_7t        0x000000000000044c        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000430        0x0
+.vfp11_veneer   0x000000000000044c        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000000430        0x0
+.v4_bx          0x000000000000044c        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000000430        0x0
+.iplt           0x000000000000044c        0x0
  .iplt          0x0000000000000000        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.rel.dyn        0x0000000000000430        0x0
+.rel.dyn        0x000000000000044c        0x0
  .rel.iplt      0x0000000000000000        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.data           0x0000000000000430        0x4
+.data           0x000000000000044c        0x4
  *(.data)
- .data          0x0000000000000430        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
- .data          0x0000000000000430        0x4 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000000430                __dso_handle
- .data          0x0000000000000434        0x0 src/c/big-numbers.c.9.o
- .data          0x0000000000000434        0x0 chalk/appinfo.auto.c.9.o
- .data          0x0000000000000434        0x0 chalk/src/resource_ids.auto.c.9.o
- .data          0x0000000000000434        0x0 src/message_keys.auto.c.9.o
- .data          0x0000000000000434        0x0 /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
- .data          0x0000000000000434        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
- .data          0x0000000000000434        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
+ .data          0x000000000000044c        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
+ .data          0x000000000000044c        0x4 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x000000000000044c                __dso_handle
+ .data          0x0000000000000450        0x0 src/c/big-numbers.c.9.o
+ .data          0x0000000000000450        0x0 chalk/appinfo.auto.c.9.o
+ .data          0x0000000000000450        0x0 chalk/src/resource_ids.auto.c.9.o
+ .data          0x0000000000000450        0x0 src/message_keys.auto.c.9.o
+ .data          0x0000000000000450        0x0 /home/shane/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk/lib/libpebble.a(tmpA6jpSLpebble.o)
+ .data          0x0000000000000450        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
+ .data          0x0000000000000450        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
  *(.data.*)
 
-.igot.plt       0x0000000000000434        0x0
+.igot.plt       0x0000000000000450        0x0
  .igot.plt      0x0000000000000000        0x0 /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.bss            0x0000000000000434       0x14
+.bss            0x0000000000000450       0x14
  *(.bss)
  *(.bss.*)
- .bss.s_canvas  0x0000000000000434        0x4 src/c/big-numbers.c.9.o
+ .bss.s_canvas  0x0000000000000450        0x4 src/c/big-numbers.c.9.o
  .bss.s_buffer.7499
-                0x0000000000000438        0x8 src/c/big-numbers.c.9.o
+                0x0000000000000454        0x8 src/c/big-numbers.c.9.o
  .bss.s_time_layer
-                0x0000000000000440        0x4 src/c/big-numbers.c.9.o
+                0x000000000000045c        0x4 src/c/big-numbers.c.9.o
  .bss.s_main_window
-                0x0000000000000444        0x4 src/c/big-numbers.c.9.o
+                0x0000000000000460        0x4 src/c/big-numbers.c.9.o
 
 DISCARD
  libc.a(*)
@@ -1416,11 +1417,11 @@ OUTPUT(/home/shane/pebble-dev/big-numbers/build/chalk/pebble-app.elf elf32-littl
  .comment       0x0000000000000000       0x4f src/message_keys.auto.c.9.o
  .comment       0x0000000000000000       0x4f /home/shane/pebble-dev/pebble-sdk-4.4.1-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000      0xfdd
- .debug_info    0x0000000000000000      0xbdf src/c/big-numbers.c.9.o
- .debug_info    0x0000000000000bdf      0x319 chalk/appinfo.auto.c.9.o
- .debug_info    0x0000000000000ef8       0x64 chalk/src/resource_ids.auto.c.9.o
- .debug_info    0x0000000000000f5c       0x81 src/message_keys.auto.c.9.o
+.debug_info     0x0000000000000000     0x1013
+ .debug_info    0x0000000000000000      0xc15 src/c/big-numbers.c.9.o
+ .debug_info    0x0000000000000c15      0x319 chalk/appinfo.auto.c.9.o
+ .debug_info    0x0000000000000f2e       0x64 chalk/src/resource_ids.auto.c.9.o
+ .debug_info    0x0000000000000f92       0x81 src/message_keys.auto.c.9.o
 
 .debug_abbrev   0x0000000000000000      0x38d
  .debug_abbrev  0x0000000000000000      0x285 src/c/big-numbers.c.9.o
@@ -1444,20 +1445,20 @@ OUTPUT(/home/shane/pebble-dev/big-numbers/build/chalk/pebble-app.elf elf32-littl
 .debug_ranges   0x0000000000000000       0x38
  .debug_ranges  0x0000000000000000       0x38 src/c/big-numbers.c.9.o
 
-.debug_line     0x0000000000000000      0x4bd
- .debug_line    0x0000000000000000      0x2bb src/c/big-numbers.c.9.o
- .debug_line    0x00000000000002bb      0x11f chalk/appinfo.auto.c.9.o
- .debug_line    0x00000000000003da       0x1d chalk/src/resource_ids.auto.c.9.o
- .debug_line    0x00000000000003f7       0xc6 src/message_keys.auto.c.9.o
+.debug_line     0x0000000000000000      0x4be
+ .debug_line    0x0000000000000000      0x2bc src/c/big-numbers.c.9.o
+ .debug_line    0x00000000000002bc      0x11f chalk/appinfo.auto.c.9.o
+ .debug_line    0x00000000000003db       0x1d chalk/src/resource_ids.auto.c.9.o
+ .debug_line    0x00000000000003f8       0xc6 src/message_keys.auto.c.9.o
 
-.debug_str      0x0000000000000000      0x7c8
- .debug_str     0x0000000000000000      0x548 src/c/big-numbers.c.9.o
-                                        0x5e8 (size before relaxing)
- .debug_str     0x0000000000000548      0x238 chalk/appinfo.auto.c.9.o
+.debug_str      0x0000000000000000      0x7e8
+ .debug_str     0x0000000000000000      0x568 src/c/big-numbers.c.9.o
+                                        0x608 (size before relaxing)
+ .debug_str     0x0000000000000568      0x238 chalk/appinfo.auto.c.9.o
                                         0x310 (size before relaxing)
- .debug_str     0x0000000000000780       0x1e chalk/src/resource_ids.auto.c.9.o
+ .debug_str     0x00000000000007a0       0x1e chalk/src/resource_ids.auto.c.9.o
                                          0xd7 (size before relaxing)
- .debug_str     0x000000000000079e       0x2a src/message_keys.auto.c.9.o
+ .debug_str     0x00000000000007be       0x2a src/message_keys.auto.c.9.o
                                          0xec (size before relaxing)
 
 .debug_frame    0x0000000000000000       0xb8
