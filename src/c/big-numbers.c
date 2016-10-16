@@ -44,7 +44,7 @@ static void battery_callback(BatteryChargeState state) {
 
 static void layer_update_proc(Layer *layer, GContext *ctx) {
   //GRect bounds = layer_get_bounds(layer);
-  graphics_context_set_fill_color(ctx, GColorPastelYellow);
+  graphics_context_set_fill_color(ctx, GColorPictonBlue);
   graphics_fill_circle(ctx, GPoint(89, 89), 75);
 }
 
@@ -76,7 +76,7 @@ static void main_window_load(Window *window) {
   s_day_layer = text_layer_create(
       GRect(0, 105, (bounds.size.w / 2) - 3, 32));
 
-  text_layer_set_background_color(s_day_layer, GColorRed);
+  text_layer_set_background_color(s_day_layer, GColorClear);
   text_layer_set_text_color(s_day_layer, GColorBlack);
   text_layer_set_text(s_day_layer, "---");
   text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
@@ -86,7 +86,7 @@ static void main_window_load(Window *window) {
   s_date_layer = text_layer_create(
       GRect(90, 105, bounds.size.w, 32));
 
-  text_layer_set_background_color(s_date_layer, GColorGreen);
+  text_layer_set_background_color(s_date_layer, GColorClear);
   text_layer_set_text_color(s_date_layer, GColorBlack);
   text_layer_set_text(s_date_layer, "---");
   text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
