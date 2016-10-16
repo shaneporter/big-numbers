@@ -2,7 +2,7 @@
 
 // static variables:
 static Window *s_main_window;
-static TextLayer *s_time_layer;
+static TextLayer *s_time_layer, *s_day_layer, *s_date_layer;
 static Layer *s_canvas, *s_battery_layer;
 static int s_battery_level;
 
@@ -15,11 +15,22 @@ static void update_time() {
 
   // Write the current hours and minutes into a buffer
   static char s_buffer[8];
+  static char s_day_buffer[8];
+  static char s_date_buffer[8];
   strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
                                           "%H:%M" : "%I:%M", tick_time);
 
   // Display this time on the TextLayer
   text_layer_set_text(s_time_layer, s_buffer);
+
+  memset(s_day_buffer, '\0', sizeof(s_day_buffer));
+  memset(s_date_buffer, '\0', sizeof(s_date_buffer));
+
+  strcpy(s_day_buffer, "66");
+  strcpy(s_date_buffer, "01");
+
+  text_layer_set_text(s_day_layer, s_day_buffer);
+  text_layer_set_text(s_date_layer, s_date_buffer);
 }
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
@@ -32,7 +43,7 @@ static void battery_callback(BatteryChargeState state) {
 }
 
 static void layer_update_proc(Layer *layer, GContext *ctx) {
-  GRect bounds = layer_get_bounds(layer);
+  //GRect bounds = layer_get_bounds(layer);
   graphics_context_set_fill_color(ctx, GColorPastelYellow);
   graphics_fill_circle(ctx, GPoint(89, 89), 75);
 }
@@ -55,12 +66,32 @@ static void main_window_load(Window *window) {
   s_time_layer = text_layer_create(
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
 
-  // Improve the layout to be more like a watchface
   text_layer_set_background_color(s_time_layer, GColorClear);
   text_layer_set_text_color(s_time_layer, GColorBlack);
   text_layer_set_text(s_time_layer, "00:00");
   text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+
+  // day layer
+  s_day_layer = text_layer_create(
+      GRect(0, 90, bounds.size.w, 25));
+
+  text_layer_set_background_color(s_day_layer, GColorRed);
+  text_layer_set_text_color(s_day_layer, GColorBlack);
+  text_layer_set_text(s_day_layer, "---");
+  text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_LECO_28_LIGHT_NUMBERS));
+  text_layer_set_text_alignment(s_day_layer, GTextAlignmentRight);
+
+  // date layer
+  s_date_layer = text_layer_create(
+      GRect(91, 100, bounds.size.w, 50));
+
+  text_layer_set_background_color(s_date_layer, GColorGreen);
+  text_layer_set_text_color(s_date_layer, GColorBlack);
+  text_layer_set_text(s_date_layer, "---");
+  text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_LECO_28_LIGHT_NUMBERS));
+  text_layer_set_text_alignment(s_date_layer, GTextAlignmentLeft);
+
 
   s_canvas = layer_create(bounds);
   s_battery_layer = layer_create(bounds);
@@ -73,6 +104,8 @@ static void main_window_load(Window *window) {
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_day_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_date_layer));
 }
 
 static void main_window_unload(Window *window) {
@@ -81,6 +114,8 @@ static void main_window_unload(Window *window) {
   layer_destroy(s_canvas);
   // Destroy TextLayer
   text_layer_destroy(s_time_layer);
+  text_layer_destroy(s_day_layer);
+  text_layer_destroy(s_date_layer);
 }
 
 static void init() {
