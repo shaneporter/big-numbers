@@ -74,7 +74,7 @@ static void main_window_load(Window *window) {
 
   // day layer
   s_day_layer = text_layer_create(
-      GRect(0, 90, bounds.size.w, 25));
+      GRect(0, 105, bounds.size.w / 2, 32));
 
   text_layer_set_background_color(s_day_layer, GColorRed);
   text_layer_set_text_color(s_day_layer, GColorBlack);
@@ -84,7 +84,7 @@ static void main_window_load(Window *window) {
 
   // date layer
   s_date_layer = text_layer_create(
-      GRect(91, 100, bounds.size.w, 50));
+      GRect(91, 105, bounds.size.w, 32));
 
   text_layer_set_background_color(s_date_layer, GColorGreen);
   text_layer_set_text_color(s_date_layer, GColorBlack);
