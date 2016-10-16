@@ -67,7 +67,7 @@ static void main_window_load(Window *window) {
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
 
   text_layer_set_background_color(s_time_layer, GColorClear);
-  text_layer_set_text_color(s_time_layer, GColorBlack);
+  text_layer_set_text_color(s_time_layer, GColorOxfordBlue);
   text_layer_set_text(s_time_layer, "00:00");
   text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
@@ -77,7 +77,7 @@ static void main_window_load(Window *window) {
       GRect(0, 105, (bounds.size.w / 2) - 3, 32));
 
   text_layer_set_background_color(s_day_layer, GColorClear);
-  text_layer_set_text_color(s_day_layer, GColorBlack);
+  text_layer_set_text_color(s_day_layer, GColorOxfordBlue);
   text_layer_set_text(s_day_layer, "---");
   text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(s_day_layer, GTextAlignmentRight);
@@ -87,7 +87,7 @@ static void main_window_load(Window *window) {
       GRect(90, 105, bounds.size.w, 32));
 
   text_layer_set_background_color(s_date_layer, GColorClear);
-  text_layer_set_text_color(s_date_layer, GColorBlack);
+  text_layer_set_text_color(s_date_layer, GColorOxfordBlue);
   text_layer_set_text(s_date_layer, "---");
   text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentLeft);
