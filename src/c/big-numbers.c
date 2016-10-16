@@ -15,20 +15,20 @@ static void update_time() {
 
   // Write the current hours and minutes into a buffer
   static char s_buffer[8];
-  static char s_day_buffer[8];
-  static char s_date_buffer[8];
+  static char s_day_buffer[4];
+  static char s_date_buffer[4];
+  const char* const days[] = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
+
   strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
                                           "%H:%M" : "%I:%M", tick_time);
 
   // Display this time on the TextLayer
   text_layer_set_text(s_time_layer, s_buffer);
 
-  memset(s_day_buffer, '\0', sizeof(s_day_buffer));
-  memset(s_date_buffer, '\0', sizeof(s_date_buffer));
-
-  strcpy(s_day_buffer, "66");
-  strcpy(s_date_buffer, "01");
-
+  //strftime(s_day_buffer, sizeof(s_day_buffer), "%w", tick_time);
+  strcpy(s_day_buffer, days[tick_time->tm_wday]);  
+  strftime(s_date_buffer, sizeof(s_date_buffer), "%d", tick_time);
+  
   text_layer_set_text(s_day_layer, s_day_buffer);
   text_layer_set_text(s_date_layer, s_date_buffer);
 }
@@ -79,7 +79,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_day_layer, GColorRed);
   text_layer_set_text_color(s_day_layer, GColorBlack);
   text_layer_set_text(s_day_layer, "---");
-  text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_LECO_28_LIGHT_NUMBERS));
+  text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(s_day_layer, GTextAlignmentRight);
 
   // date layer
@@ -89,7 +89,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_date_layer, GColorGreen);
   text_layer_set_text_color(s_date_layer, GColorBlack);
   text_layer_set_text(s_date_layer, "---");
-  text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_LECO_28_LIGHT_NUMBERS));
+  text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentLeft);
 
 
