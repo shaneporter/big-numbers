@@ -49,6 +49,7 @@ static void layer_update_proc(Layer *layer, GContext *ctx) {
 
   // lines:
   graphics_context_set_stroke_color(ctx, GColorWhite);
+  graphics_context_set_stroke_width(ctx, 1);
 
   graphics_draw_line(ctx, GPoint(33, 105), GPoint(147, 105));
   graphics_draw_line(ctx, GPoint(88, 105), GPoint(88, 128));
