@@ -3,7 +3,7 @@
 // static variables:
 static Window *s_main_window;
 static TextLayer *s_time_layer, *s_day_layer, *s_date_layer;
-static Layer *s_canvas, *s_battery_layer;
+static Layer *s_canvas, *s_battery_layer, *s_bluetooth_layer;
 static int s_battery_level;
 
 #define INSET 5
@@ -64,6 +64,15 @@ static void battery_layer_update_proc(Layer *layer, GContext *ctx) {
   graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, DEG_TO_TRIGANGLE((int)(float)(((float)s_battery_level / 100.0F) * 360)));
 }
 
+static void bluetooth_layer_update_proc(Layer *layer, GContext *ctx) {
+  GRect bounds = layer_get_bounds(layer);
+
+  // bluetooth is circle arc
+  GRect frame = grect_inset(bounds, GEdgeInsets(3 * INSET));
+  graphics_context_set_fill_color(ctx, GColorVividCerulean);
+  graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, TRIG_MAX_ANGLE);
+}
+
 static void main_window_load(Window *window) {
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
@@ -102,12 +111,15 @@ static void main_window_load(Window *window) {
 
   s_canvas = layer_create(bounds);
   s_battery_layer = layer_create(bounds);
+  s_bluetooth_layer = layer_create(bounds);
 
   layer_set_update_proc(s_canvas, layer_update_proc);
   layer_set_update_proc(s_battery_layer, battery_layer_update_proc);
+  layer_set_update_proc(s_bluetooth_layer, bluetooth_layer_update_proc);
 
   layer_add_child(window_layer, s_canvas);
   layer_add_child(window_layer, s_battery_layer);
+  layer_add_child(window_layer, s_bluetooth_layer);
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
@@ -116,7 +128,8 @@ static void main_window_load(Window *window) {
 }
 
 static void main_window_unload(Window *window) {
-  // Destroy canvas and battery:
+  // Destroy canvas, bluetooth and battery:
+  layer_destroy(s_bluetooth_layer);
   layer_destroy(s_battery_layer);
   layer_destroy(s_canvas);
   // Destroy TextLayer
