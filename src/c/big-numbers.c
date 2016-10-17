@@ -42,6 +42,15 @@ static void battery_callback(BatteryChargeState state) {
   s_battery_level = state.charge_percent;
 }
 
+static void bluetooth_callback(bool connected) {
+
+  layer_set_hidden((Layer*)s_bluetooth_layer, connected);
+
+  if(!connected) {
+    vibes_double_pulse();
+  }
+}
+
 static void layer_update_proc(Layer *layer, GContext *ctx) {
   //GRect bounds = layer_get_bounds(layer);
   graphics_context_set_fill_color(ctx, GColorPictonBlue);
@@ -69,7 +78,7 @@ static void bluetooth_layer_update_proc(Layer *layer, GContext *ctx) {
 
   // bluetooth is circle arc
   GRect frame = grect_inset(bounds, GEdgeInsets(3 * INSET));
-  graphics_context_set_fill_color(ctx, GColorVividCerulean);
+  graphics_context_set_fill_color(ctx, GColorBlueMoon);
   graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, INSET, 0, TRIG_MAX_ANGLE);
 }
 
@@ -146,6 +155,10 @@ static void init() {
   window_set_window_handlers(s_main_window, (WindowHandlers) {
     .load = main_window_load,
     .unload = main_window_unload
+  });
+
+  connection_service_subscribe((ConnectionHandlers) {
+    .pebble_app_connection_handler = bluetooth_callback
   });
 
   // Register with TickTimerService
