@@ -104,7 +104,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_day_layer, GColorClear);
   text_layer_set_text_color(s_day_layer, GColorOxfordBlue);
   text_layer_set_text(s_day_layer, "---");
-  text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
+  text_layer_set_font(s_day_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24));
   text_layer_set_text_alignment(s_day_layer, GTextAlignmentRight);
 
   // date layer
@@ -114,7 +114,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(s_date_layer, GColorClear);
   text_layer_set_text_color(s_date_layer, GColorOxfordBlue);
   text_layer_set_text(s_date_layer, "---");
-  text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
+  text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24));
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentLeft);
 
 
