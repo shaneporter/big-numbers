@@ -119,7 +119,6 @@ static void main_window_load(Window *window) {
   text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24));
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentLeft);
 
-
   s_canvas = layer_create(bounds);
   s_battery_layer = layer_create(bounds);
   s_bluetooth_layer = layer_create(bounds);
@@ -136,6 +135,8 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_day_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_date_layer));
+  
+  //bluetooth_callback();
 }
 
 static void main_window_unload(Window *window) {
