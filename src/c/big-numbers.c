@@ -40,6 +40,8 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 static void battery_callback(BatteryChargeState state) {
   // Record the new battery level
   s_battery_level = state.charge_percent;
+  
+  layer_mark_dirty(s_battery_layer);
 }
 
 static void bluetooth_callback(bool connected) {
