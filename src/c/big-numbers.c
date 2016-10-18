@@ -91,7 +91,7 @@ static void main_window_load(Window *window) {
 
   // Create the TextLayer with specific bounds
   s_time_layer = text_layer_create(
-      GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+      GRect(0, 53, bounds.size.w, 50));
 
   text_layer_set_background_color(s_time_layer, GColorClear);
   text_layer_set_text_color(s_time_layer, GColorOxfordBlue);
