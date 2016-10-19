@@ -135,8 +135,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_day_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_date_layer));
-  
-  //bluetooth_callback();
+ 
 }
 
 static void main_window_unload(Window *window) {
@@ -163,6 +162,9 @@ static void init() {
   connection_service_subscribe((ConnectionHandlers) {
     .pebble_app_connection_handler = bluetooth_callback
   });
+
+//  bool connected = bluetooth_connection_service_peek();
+//  bluetooth_callback(connected); 
 
   // Register with TickTimerService
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
