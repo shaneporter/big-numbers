@@ -46,7 +46,9 @@ static void battery_callback(BatteryChargeState state) {
 
 static void bluetooth_callback(bool connected) {
 
-  layer_set_hidden((Layer*)s_bluetooth_layer, connected);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "Got a bluetooth status update");
+
+  layer_set_hidden((Layer*)s_bluetooth_layer, !connected);
 
   if(!connected) {
     vibes_double_pulse();
@@ -163,8 +165,10 @@ static void init() {
     .pebble_app_connection_handler = bluetooth_callback
   });
 
-//  bool connected = bluetooth_connection_service_peek();
-//  bluetooth_callback(connected); 
+  // Register for Bluetooth connection updates
+  connection_service_subscribe((ConnectionHandlers) {
+    .pebble_app_connection_handler = bluetooth_callback
+  });
 
   // Register with TickTimerService
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
@@ -180,6 +184,9 @@ static void init() {
 
   // Ensure battery level is displayed from the start
   battery_callback(battery_state_service_peek());
+
+  // bluetooth state:
+  bluetooth_callback(connection_service_peek_pebble_app_connection());
 }
 
 static void deinit() {
