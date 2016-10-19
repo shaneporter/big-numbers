@@ -169,14 +169,17 @@ static void init() {
   // Register with TickTimerService
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 
+  // battery state:
+  battery_state_service_subscribe(battery_callback);
+
   // Show the Window on the watch, with animated=true
   window_stack_push(s_main_window, true);
+  
+  // make sure the time is displayed from the start:
+  update_time();
 
   // Ensure battery level is displayed from the start
   battery_callback(battery_state_service_peek());
-
-  // make sure the time is displayed from the start:
-  update_time();
 }
 
 static void deinit() {
