@@ -46,7 +46,7 @@ static void battery_callback(BatteryChargeState state) {
 
 static void bluetooth_callback(bool connected) {
 
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "Got a bluetooth status update");
+  //APP_LOG(APP_LOG_LEVEL_DEBUG, "Got a bluetooth status update");
 
   layer_set_hidden((Layer*)s_bluetooth_layer, !connected);
 
