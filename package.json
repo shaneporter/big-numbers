@@ -1,26 +1,28 @@
 {
-  "name": "Big Numbers",
-  "author": "Shane Porter",
-  "version": "1.0.0",
-  "keywords": ["pebble-app"],
-  "private": true,
-  "dependencies": {},
-  "pebble": {
-    "displayName": "big-numbers",
-    "uuid": "2a94ef9e-ff55-4b43-8448-9e2690979a61",
-    "sdkVersion": "3",
-    "enableMultiJS": true,
-    "targetPlatforms": [
-      "chalk"
+    "author": "Shane Porter",
+    "dependencies": {},
+    "keywords": [
+        "pebble-app"
     ],
-    "watchapp": {
-      "watchface": true 
+    "name": "big-numbers",
+    "pebble": {
+        "displayName": "big-numbers",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "dummy"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "chalk"
+        ],
+        "uuid": "2a94ef9e-ff55-4b43-8448-9e2690979a61",
+        "watchapp": {
+            "watchface": true
+        }
     },
-    "messageKeys": [
-      "dummy"
-    ],
-    "resources": {
-      "media": []
-    }
-  }
+    "version": "1.0.0"
 }

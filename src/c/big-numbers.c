@@ -46,7 +46,7 @@ static void battery_callback(BatteryChargeState state) {
 
 static void bluetooth_callback(bool connected) {
 
-  //APP_LOG(APP_LOG_LEVEL_DEBUG, "Got a bluetooth status update");
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "Got a bluetooth status update");
 
   layer_set_hidden((Layer*)s_bluetooth_layer, !connected);
 
@@ -65,7 +65,7 @@ static void layer_update_proc(Layer *layer, GContext *ctx) {
   graphics_context_set_stroke_width(ctx, 1);
 
   graphics_draw_line(ctx, GPoint(33, 100), GPoint(147, 100));
-  graphics_draw_line(ctx, GPoint(89, 100), GPoint(89, 127));
+  graphics_draw_line(ctx, GPoint(90, 100), GPoint(90, 127));
 }
 
 static void battery_layer_update_proc(Layer *layer, GContext *ctx) {
@@ -113,7 +113,7 @@ static void main_window_load(Window *window) {
 
   // date layer
   s_date_layer = text_layer_create(
-      GRect((bounds.size.w) / 2, 97, bounds.size.w, 32));
+      GRect(((bounds.size.w) / 2) + 4, 97, (bounds.size.w / 2), 32));
 
   text_layer_set_background_color(s_date_layer, GColorClear);
   text_layer_set_text_color(s_date_layer, GColorOxfordBlue);
