@@ -161,10 +161,6 @@ static void init() {
     .unload = main_window_unload
   });
 
-  connection_service_subscribe((ConnectionHandlers) {
-    .pebble_app_connection_handler = bluetooth_callback
-  });
-
   // Register for Bluetooth connection updates
   connection_service_subscribe((ConnectionHandlers) {
     .pebble_app_connection_handler = bluetooth_callback
