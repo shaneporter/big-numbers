@@ -4,9 +4,9 @@
     "keywords": [
         "pebble-app"
     ],
-    "name": "big-numbers",
+    "name": "Rings",
     "pebble": {
-        "displayName": "big-numbers",
+        "displayName": "Rings",
         "enableMultiJS": true,
         "messageKeys": [
             "dummy"
