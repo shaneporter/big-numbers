@@ -1,5 +1,7 @@
-# Big Numbers
+# Rings
 A watch face for Pebble Time Round
+
+![screenshot of Rings watch face](https://github.com/shaneporter/rings/blob/master/face1.png)
 
 ### Features
 - Digital clock with day of week and date
