@@ -2,11 +2,14 @@
 
 // static variables:
 static Window *s_main_window;
-static TextLayer *s_time_layer, *s_day_layer, *s_date_layer;
+static TextLayer *s_time_separator_layer, *s_time_hour_layer, *s_time_minute_layer, *s_day_layer, *s_date_layer;
 static Layer *s_canvas, *s_battery_layer, *s_bluetooth_layer;
 static int s_battery_level;
 
 #define INSET 5
+#define TEXT_Y 53
+#define TIME_COMPONENT_WIDTH 80
+#define TIME_COMPONENT_HEIGHT 50
 
 static void update_time() {
   // Get a tm structure
@@ -14,20 +17,20 @@ static void update_time() {
   struct tm *tick_time = localtime(&temp);
 
   // Write the current hours and minutes into a buffer
-  static char s_buffer[8];
+  static char s_hours_buffer[3];
+  static char s_minutes_buffer[3];
   static char s_day_buffer[4];
   static char s_date_buffer[4];
   const char* const days[] = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
 
-  strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
-                                          "%H:%M" : "%I:%M", tick_time);
+  snprintf(s_hours_buffer, sizeof(s_hours_buffer), "%d", tick_time->tm_hour);
+  snprintf(s_minutes_buffer, sizeof(s_minutes_buffer), "%d", tick_time -> tm_min);
 
-  // Display this time on the TextLayer
-  text_layer_set_text(s_time_layer, s_buffer);
-
-  //strftime(s_day_buffer, sizeof(s_day_buffer), "%w", tick_time);
   strcpy(s_day_buffer, days[tick_time->tm_wday]);  
   strftime(s_date_buffer, sizeof(s_date_buffer), "%d", tick_time);
+
+  text_layer_set_text(s_time_hour_layer, s_hours_buffer);
+  text_layer_set_text(s_time_minute_layer, s_minutes_buffer);
   
   text_layer_set_text(s_day_layer, s_day_buffer);
   text_layer_set_text(s_date_layer, s_date_buffer);
@@ -91,15 +94,26 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  // Create the TextLayer with specific bounds
-  s_time_layer = text_layer_create(
-      GRect(0, 53, bounds.size.w, 50));
+  s_time_separator_layer = text_layer_create(GRect(0, TEXT_Y - 2, bounds.size.w, TIME_COMPONENT_HEIGHT));
+  text_layer_set_background_color(s_time_separator_layer, GColorClear);
+  text_layer_set_text_color(s_time_separator_layer, GColorOxfordBlue);
+  text_layer_set_text(s_time_separator_layer, ":");
+  text_layer_set_font(s_time_separator_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
+  text_layer_set_text_alignment(s_time_separator_layer, GTextAlignmentCenter);
 
-  text_layer_set_background_color(s_time_layer, GColorClear);
-  text_layer_set_text_color(s_time_layer, GColorOxfordBlue);
-  text_layer_set_text(s_time_layer, "00:00");
-  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
-  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+  s_time_hour_layer = text_layer_create(GRect(85 - TIME_COMPONENT_WIDTH, TEXT_Y, TIME_COMPONENT_WIDTH, TIME_COMPONENT_HEIGHT));
+  text_layer_set_background_color(s_time_hour_layer, GColorClear);
+  text_layer_set_text_color(s_time_hour_layer, GColorOxfordBlue);
+  text_layer_set_text(s_time_hour_layer, "00");
+  text_layer_set_font(s_time_hour_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
+  text_layer_set_text_alignment(s_time_hour_layer, GTextAlignmentRight);
+
+  s_time_minute_layer = text_layer_create(GRect(95, TEXT_Y, TIME_COMPONENT_WIDTH, TIME_COMPONENT_HEIGHT));
+  text_layer_set_background_color(s_time_minute_layer, GColorClear);
+  text_layer_set_text_color(s_time_minute_layer, GColorOxfordBlue);
+  text_layer_set_text(s_time_minute_layer, "00");
+  text_layer_set_font(s_time_minute_layer, fonts_get_system_font(FONT_KEY_LECO_42_NUMBERS));
+  text_layer_set_text_alignment(s_time_minute_layer, GTextAlignmentLeft);
 
   // day layer
   s_day_layer = text_layer_create(
@@ -134,7 +148,9 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, s_bluetooth_layer);
 
   // Add it as a child layer to the Window's root layer
-  layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_time_separator_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_time_hour_layer));
+  layer_add_child(window_layer, text_layer_get_layer(s_time_minute_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_day_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_date_layer));
  
@@ -146,7 +162,9 @@ static void main_window_unload(Window *window) {
   layer_destroy(s_battery_layer);
   layer_destroy(s_canvas);
   // Destroy TextLayer
-  text_layer_destroy(s_time_layer);
+  text_layer_destroy(s_time_separator_layer);
+  text_layer_destroy(s_time_hour_layer);
+  text_layer_destroy(s_time_minute_layer);
   text_layer_destroy(s_day_layer);
   text_layer_destroy(s_date_layer);
 }
