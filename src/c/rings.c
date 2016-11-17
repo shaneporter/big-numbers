@@ -26,6 +26,9 @@ static void update_time() {
   snprintf(s_hours_buffer, sizeof(s_hours_buffer), "%d", tick_time->tm_hour);
   snprintf(s_minutes_buffer, sizeof(s_minutes_buffer), "%d", tick_time -> tm_min);
 
+  strftime(s_hours_buffer, sizeof(s_hours_buffer), clock_is_24h_style() ? "%H" : "%I", tick_time);
+  strftime(s_minutes_buffer, sizeof(s_minutes_buffer), "%M", tick_time);
+
   strcpy(s_day_buffer, days[tick_time->tm_wday]);  
   strftime(s_date_buffer, sizeof(s_date_buffer), "%d", tick_time);
 
